@@ -85,10 +85,7 @@ dependencies of dependencies?
 
 How will you test? unit tests vs. integration tests? what will be passing criteria (e.g., expect 100% tests to pass and 70% code coverage)? How will you monitor for abnormalities or system failure? What metrics will you 
 put in place to measure performance of the system? What alarms will you put in place so engineers are alerted before system completely breaks down? (e.g., fire alarm when disk quota reaches 99% used space, requests per 
-second reach X, latency - the time to serve a request - reaches Y etc.).
-
-List all the tools you will use here. E.g., will you use Sentry for crash monitoring and error reporting? Will you use PagerDuty for alarm generation? will you use Kafka for logging? will you use some tool like ELK to mine 
-logs? Will you use Grafana to visualize metrics?
+second reach X, latency - the time to serve a request - reaches Y etc.). List all the tools you will use for monitoring, error reporting, alerts, alarms etc. in this section.
 
 == Build, Deployment and Continuous Integration (CI)
 
@@ -107,8 +104,6 @@ Before sending your design doc to others to review, take a pass at it pretending
 
 **Do the Vacation Test**
 If you go on a long vacation now with no internet access, can someone on your team read the doc and implement it as you intended?
-
-The main goal of a design doc is not knowledge sharing, but this is a good way to evaluate for clarity so that others can actually give you useful feedback.
 
 == References
 

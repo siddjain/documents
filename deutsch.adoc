@@ -1,4 +1,4 @@
-:stem: latexmath
+:stem: 
 
 A big hurdle in understanding quantum computing is the obnoxious notation that really gets in the way esp. when writing equations on paper.
 Anyway begin by recalling that given a system of _n_ qubits, the state of the system is represented by a _probability amplitude vector_

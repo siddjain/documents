@@ -1,0 +1,20 @@
+:stem: latexmath
+
+A big hurdle in understanding quantum computing is the obnoxious notation that really gets in the way esp. when writing equations on paper.
+Anyway begin by recalling that given a system of _n_ qubits, the state of the system is represented by a _probability amplitude vector_
+aka _the wave function_ stem:[\Psi] of length 2^_n_^. When the qubit register is _measured_ all the qubits will collapse into 0s and 1s giving
+a classical result which is nothing but a binary number between 0 and 2^_n_^-1. The _i-th_ component of the _probability amplitude vector_
+stem:[\Psi] is a complex number, the modulus-square of which will give the probability that when the qubit register is _measured_ it will end up in
+the _i-th_ _computational basis state_ (i.e., will have the numerical value _i_). 
+
+Example: consider _n = 3_ qubits. The _probability amplitude vector_ is a vector of complex numbers of length _2^3^=8_.
+Following equation holds at all times:
+
+[latexmath]
+++++
+\begin{equation}
+\sum_{i=0}^{i=n} || \Psi_i || ^ 2 = 1
+\end{equation}
+++++
+
+which is saying the sum of probabilities should equal 1.

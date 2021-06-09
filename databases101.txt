@@ -1,0 +1,82 @@
+# http://www.graphviz.org/content/cluster
+
+digraph G {
+    
+    subgraph clusterHeader {
+        margin=0;
+        style="invis";
+        HEADER [shape="none", label="Databases 101"];  
+    }
+	
+	subgraph clusterMain {
+	    margin=0;
+        style="invis";
+        
+    	oltp [label=<
+    	<table border="0" cellborder="0" cellspacing="1">
+         <tr><td align="left"><b>OLTP (ONline Transaction Processing)</b></td></tr>
+         <tr><td align="left">• low latency</td></tr>
+         <tr><td align="left">• transactions</td></tr>
+         <tr><td align="left">• used by end-customer (external users) <br/> via web or other applications</td></tr>
+         <tr><td align="left">• queries do not change. <br/> the parameters of the query will change <br/> in response to different requests <br/> but the SQL statement coded in the application <br/> itself does not change</td></tr>
+         <tr><td align="left">• access pattern (queries) call for <br/> selecting, updating or inserting few rows <br/> of the table (not whole columns of the data)</td></tr>
+         <tr><td align="left">• e.g., a database to support <br/>financial transactions <br/>happening in a bank</td></tr>
+       </table>
+       >, shape="box"];
+       
+       olap [label=<
+    	<table border="0" cellborder="0" cellspacing="1">
+         <tr><td align="left"><b>OLAP (ONline Analytics Processing <br/> aka Data Warehouse)</b></td></tr>
+         <tr><td align="left">• need to compute analytics, statistics <br/> that require aggregating <br/> many records (often whole columns)</td></tr>
+         <tr><td align="left">• queries not known in advance <br/> so indexing data not of much use</td></tr>
+         <tr><td align="left">• read heavy (data is mostly read or queried from the db)</td></tr>
+         <tr><td align="left">• used by data scientists or analysts <br/> within the company (internal users)</td></tr>
+         <tr><td align="left">• data commonly stored in HDFS in parquet format</td></tr>
+         <tr><td align="left">• column-based datastores</td></tr>
+         <tr><td align="left">• Query Engines: Apache Hive, Presto, <br/> Vertica, Teradata, Spark</td></tr>
+       </table>
+       >, shape="box"];
+    
+        relational [label=<
+        <table border="0" cellborder="0" cellspacing="1">
+         <tr><td align="left"><b>Relational</b></td></tr>
+         <tr>
+            <td align="left">• MySQL, PostgreSQL</td>
+         </tr>
+         <tr>
+            <td align="left">• Data stored in B-Trees <br/> and updated in-place</td>
+         </tr>
+        </table>    
+        >, shape="box"];
+        
+        nosql [label=<
+        <table border="0" cellborder="0" cellspacing="1">
+         <tr><td align="left"><b>NoSQL</b></td></tr>
+         <tr><td align="left">• Key-value stores</td></tr>
+         <tr>
+            <td align="left">• Cassandra, MongoDB, LevelDB, RocksDB, BigTable</td>
+         </tr>
+         <tr>
+            <td align="left">• Log structured storage</td>
+            
+         </tr>
+        </table>    
+        >, shape="box"];
+        
+    	start -> oltp;
+    	start -> olap;
+    	oltp -> relational;
+    	oltp -> nosql;
+    	
+    	start [shape=Mdiamond];
+	}
+	
+	subgraph clusterFooter {
+        margin=0;
+        style="invis";
+        footer [shape="none", margin=0, label="(c) Siddharth Jain (http://www.siddjain.com)"];
+    }
+    
+    HEADER->start [style=invis];
+    nosql->footer [style=invis weight=0];
+}

@@ -32,8 +32,8 @@ digraph G {
          <tr><td align="left">• read heavy (data is mostly read or queried from the db)</td></tr>
          <tr><td align="left">• used by data scientists or analysts <br/> within the company (internal users)</td></tr>
          <tr><td align="left">• data commonly stored in HDFS in parquet format</td></tr>
-         <tr><td align="left">• column-based datastores</td></tr>
-         <tr><td align="left">• Query Engines: Apache Hive, Presto, <br/> Vertica, Teradata, Spark</td></tr>
+         <tr><td align="left">• column-based storage (each column stored in separate file)</td></tr>
+         <tr><td align="left">• Examples: Hive, Presto, Vertica, Teradata</td></tr>
        </table>
        >, shape="box"];
     

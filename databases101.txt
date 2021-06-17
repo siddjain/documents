@@ -14,7 +14,7 @@ digraph G {
         
     	oltp [label=<
     	<table border="0" cellborder="0" cellspacing="1">
-         <tr><td align="left"><b>OLTP (ONline Transaction Processing)</b></td></tr>
+         <tr><td align="left"><b>OLTP (OnLine Transaction Processing)</b></td></tr>
          <tr><td align="left">• low latency</td></tr>
          <tr><td align="left">• transactions</td></tr>
          <tr><td align="left">• used by end-customer (external users) <br/> via web or other applications</td></tr>
@@ -26,14 +26,13 @@ digraph G {
        
        olap [label=<
     	<table border="0" cellborder="0" cellspacing="1">
-         <tr><td align="left"><b>OLAP (ONline Analytics Processing <br/> aka Data Warehouse)</b></td></tr>
+         <tr><td align="left"><b>OLAP (OnLine Analytics Processing <br/> aka Data Warehouse)</b></td></tr>
          <tr><td align="left">• need to compute analytics, statistics <br/> that require aggregating <br/> many records (often whole columns)</td></tr>
          <tr><td align="left">• queries not known in advance <br/> so indexing data not of much use</td></tr>
          <tr><td align="left">• read heavy (data is mostly read or queried from the db)</td></tr>
          <tr><td align="left">• used by data scientists or analysts <br/> within the company (internal users)</td></tr>
          <tr><td align="left">• data commonly stored in HDFS in parquet format</td></tr>
          <tr><td align="left">• column-based storage (each column stored in separate file)</td></tr>
-         <tr><td align="left">• Examples: Hive, Presto, Vertica, Teradata</td></tr>
        </table>
        >, shape="box"];
     
@@ -58,15 +57,31 @@ digraph G {
          </tr>
          <tr>
             <td align="left">• Log structured storage</td>
-            
          </tr>
         </table>    
+        >, shape="box"];
+        
+        olap_class1 [label=<
+        <table border="0" cellborder="0" cellspacing="1">
+         <tr><td align="left">Hive, Presto, Vertica, Teradata</td></tr>
+        </table>
+        >, shape="box"];
+        
+        olap_class2 [label=<
+        <table border="0" cellborder="0" cellspacing="1">
+         <tr><td align="left"><b>Brave New World</b></td></tr>
+         <tr><td align="left"> Snowflake vs. Databricks</td></tr>
+         <tr><td align="left">• Databricks is enterprise Spark <br/> (just as RedHat is enterprise Linux)</td></tr>
+         <tr><td align="left">• Databricks heavily skewed towards AI/ML</td></tr>        
+        </table>
         >, shape="box"];
         
     	start -> oltp;
     	start -> olap;
     	oltp -> relational;
     	oltp -> nosql;
+    	olap -> olap_class1;
+    	olap -> olap_class2;
     	
     	start [shape=Mdiamond];
 	}
